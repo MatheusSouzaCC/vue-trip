@@ -12,7 +12,7 @@
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
   .vue-trip-card {
     /* margin: 50px; */
     display: flex;
@@ -31,7 +31,7 @@
     display: flex;
     color: #5E5E5E;
     font-weight: 400;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     text-align: center;
     align-items: center;
     justify-content: center;
@@ -40,9 +40,19 @@
   .vue-trip-card .content {
     width: 100%;
     display: flex;
-    font-size: 1rem;
+    font-size: 0.9rem;
     padding: 20px 0;
     color: #ABABAB;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+
+ .vue-trip-card .footer {
+    width: 100%;
+    display: flex;
+    padding: 2px 0;
+    flex-wrap: wrap;
     text-align: center;
     align-items: center;
     justify-content: center;
@@ -56,11 +66,6 @@ import UUID from 'uuid/v1';
 export default {
   name: 'VCard',
   props: {
-    // stage: {
-    //   type: Object,
-    //   required: true,
-    //   default: () => {}
-    // },
     target: {
       type: String,
       required: true,
@@ -72,11 +77,6 @@ export default {
       default: () => ({}),
     },
   },
-  data() {
-    return {
-      popper: null,
-    };
-  },
   computed: {
     uuid() {
       return UUID();
@@ -84,19 +84,17 @@ export default {
   },
   mounted() {
     this.create();
-
-    // setTimeout(() => {
-    //   this.popper.hide()
-    // }, 8000)
   },
   methods: {
     create() {
-      const targetEl = document.querySelector(`[data-v-stage="${this.target}"]`);
+      this.targetEl = document.querySelector(`[data-v-stage="${this.target}"]`);
 
-      if (targetEl) {
-        targetEl.scrollIntoView({ behavior: 'smooth' });
+      if (this.targetEl) {
+        this.targetEl.scrollIntoView({
+          behavior: 'smooth',
+        });
 
-        this.popper = new Popper(targetEl, this.$el, this.params);
+        new Popper(this.targetEl, this.$el, this.params);
       }
     },
   },
