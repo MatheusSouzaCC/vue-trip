@@ -131,19 +131,14 @@ export default {
       switch (action) {
         case 'next':
           return this.next();
-            break;
         case 'previous':
           return this.previous();
-            break;
         case 'skip':
           return this.skip();
-            break;
         case 'finish':
           return this.finish();
-            break;
         default:
           return action();
-            break;
       }
     },
   },

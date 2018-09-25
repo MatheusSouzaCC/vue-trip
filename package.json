@@ -1,10 +1,22 @@
 {
   "name": "vue-trip",
   "version": "0.1.0",
-  "private": true,
+  "description": "",
+  "author": "Bruno Santos <bruno.dos1997@gmail.com>",
+  "license": "MIT",
+  "main": "dist/vue-trip.common.js",
+  "module": "dist/vue-trip.umd.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brsHunterX/vue-trip.git"
+  },
+  "keywords": [
+    "vue",
+    "trip"
+  ],
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build --target lib src/main.js",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -15,10 +27,10 @@
     "vue-ripple-directive": "^2.0.1"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.0.3",
-    "@vue/cli-plugin-eslint": "^3.0.3",
-    "@vue/cli-service": "^3.0.3",
-    "@vue/eslint-config-airbnb": "^3.0.3",
+    "@vue/cli-plugin-babel": "^3.0.4",
+    "@vue/cli-plugin-eslint": "^3.0.4",
+    "@vue/cli-service": "^3.0.4",
+    "@vue/eslint-config-airbnb": "^3.0.4",
     "lint-staged": "^7.2.2",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.1",

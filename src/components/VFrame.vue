@@ -17,8 +17,6 @@
 </style>
 
 <script>
-import { isNull, isEmpty } from 'lodash';
-
 export default {
   name: 'VFrame',
   data() {
