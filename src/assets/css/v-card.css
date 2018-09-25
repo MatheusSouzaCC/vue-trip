@@ -1,0 +1,43 @@
+.vue-trip-card {
+  display: flex;
+  padding: 24px;
+  flex-wrap: wrap;
+  max-width: 420px;
+  overflow: hidden;
+  position: absolute;
+  border-radius: 6px;
+  background: #FFFFFF;
+  box-shadow: 0 0px 32px rgba(0, 0, 0, 0.1);
+}
+
+.vue-trip-card .label {
+  width: 100%;
+  display: flex;
+  color: #5E5E5E;
+  font-weight: 400;
+  font-size: 1.2rem;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.vue-trip-card .content {
+  width: 100%;
+  display: flex;
+  padding: 20px 0;
+  color: #ABABAB;
+  font-size: 0.9rem;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.vue-trip-card .footer {
+  width: 100%;
+  display: flex;
+  padding: 2px 0;
+  flex-wrap: wrap;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}

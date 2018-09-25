@@ -1,0 +1,27 @@
+.v-button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-weight: 400;
+  line-height: 1.5;
+  font-size: 0.8rem;
+  padding: 6px 16px;
+  position: relative;
+  white-space: nowrap;
+  display: inline-block;
+  text-decoration: none;
+  transition: all 500ms ease-in-out;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.v-button.square {
+  border-radius: 0;
+}
+
+.v-button.pill {
+  border-radius: 100px;
+}
+
+.v-button.rounded {
+  border-radius: 4px;
+}

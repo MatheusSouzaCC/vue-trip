@@ -1,3 +1,6 @@
+import Vue from 'vue';
+import App from './App.vue';
+
 import VTrip from './components/VTrip.vue';
 import VCard from './components/VCard.vue';
 import VFrame from './components/VFrame.vue';
@@ -12,4 +15,10 @@ const VueTrip = {
   },
 };
 
-export default VueTrip;
+Vue.use(VueTrip)
+
+// export default VueTrip;
+
+new Vue({
+  render: h => h(App),
+}).$mount('#app');

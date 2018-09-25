@@ -8,12 +8,8 @@
 </template>
 
 <style>
+  @import '../assets/css/v-frame.css';
   @import '../assets/css/animate.css';
-
-  .v-frame {
-    position: absolute;
-    background: rgba(0, 0, 0, 0.5);
-  }
 </style>
 
 <script>

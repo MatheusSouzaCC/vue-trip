@@ -9,37 +9,7 @@
 </template>
 
 <style>
-  .v-button {
-    border: none;
-    outline: none;
-    line-height: 1.5;
-    cursor: pointer;
-    font-size: 0.8rem;
-    padding: 6px 16px;
-    position: relative;
-    display: inline-block;
-    text-decoration: none;
-    transition: all 500ms ease-in-out;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
-    white-space: nowrap;
-  }
-
-  .v-button.square {
-    border-radius: 0;
-  }
-
-  .v-button.pill {
-    border-radius: 100px;
-  }
-
-  .v-button.rounded {
-    border-radius: 4px;
-  }
-
-  .v-button.shadow {
-    box-shadow: 0px 1px 15px 1px rgba(69, 65, 78, 0.2);
-  }
+  @import '../assets/css/v-button.css';
 </style>
 
 <script>
