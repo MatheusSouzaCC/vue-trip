@@ -19,11 +19,11 @@ export default {
           title: 'Botão de inicialização',
           content: 'Clicando nesse botão você inicia nosso tutorial.',
           buttons: [
-            { label: 'Finalizar', color: '#3498db', action: 'finish' }
+            { label: 'Finalizar', color: '#3498db', action: 'finish' },
           ],
         },
       ],
-    }
+    };
   },
   methods: {
     start() {

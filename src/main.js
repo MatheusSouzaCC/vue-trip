@@ -15,7 +15,7 @@ const VueTrip = {
   },
 };
 
-Vue.use(VueTrip)
+Vue.use(VueTrip);
 
 // export default VueTrip;
 
