@@ -25,23 +25,17 @@ export default {
     target: {
       type: String,
       required: true,
-      default: () => {
-        return null
-      },
+      default: () => null,
     },
     position: {
       type: String,
       required: false,
-      default: () => {
-        return 'bottom'
-      },
+      default: () => 'bottom',
     },
     theme: {
       type: String,
       required: false,
-      default: () => {
-        return 'light'
-      },
+      default: () => 'light',
     },
   },
   computed: {

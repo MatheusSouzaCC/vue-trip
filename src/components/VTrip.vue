@@ -48,12 +48,10 @@ export default {
     configs: {
       type: Object,
       required: true,
-      default: () => {
-        return {
-          type: 'popup-steps',
-          theme: 'light',
-        }
-      },
+      default: () => ({
+        type: 'popup-steps',
+        theme: 'light',
+      }),
     },
     stages: {
       type: Array,
@@ -73,7 +71,7 @@ export default {
   },
   computed: {
     type() {
-      return this.configs.type
+      return this.configs.type;
     },
     targets() {
       return this.stages.map(stage => document.querySelector(`[data-v-stage="${stage.target}"]`));
