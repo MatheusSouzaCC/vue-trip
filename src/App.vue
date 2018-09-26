@@ -3,7 +3,7 @@
     <input data-v-stage="example1" type="button" value="Button for example" @click="start"/>
     <input data-v-stage="example2" type="button" value="Other button for example" />
 
-    <v-trip ref="trip" type="popup-frame-steps" :stages="stages" />
+    <v-trip ref="trip" :configs="configs" :stages="stages" />
   </div>
 </template>
 
@@ -13,6 +13,10 @@ export default {
   name: 'Test-Vue-Trip',
   data() {
     return {
+      configs: {
+        type: 'popup-frame-steps',
+        theme: 'dark',
+      },
       stages: [
         {
           target: 'example1',

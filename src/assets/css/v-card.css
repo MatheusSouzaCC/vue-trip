@@ -7,19 +7,34 @@
   overflow: hidden;
   position: absolute;
   border-radius: 6px;
+}
+
+.vue-trip-card.light {
   background: #FFFFFF;
   box-shadow: 0 0px 32px rgba(0, 0, 0, 0.1);
+}
+
+.vue-trip-card.dark {
+  background: #313131;
+  box-shadow: 0 0px 32px rgba(0, 0, 0, 0.3);
 }
 
 .vue-trip-card .label {
   width: 100%;
   display: flex;
-  color: #5E5E5E;
   font-weight: 400;
   font-size: 1.2rem;
   text-align: center;
   align-items: center;
   justify-content: center;
+}
+
+.vue-trip-card.light .label {
+  color: #5E5E5E;
+}
+
+.vue-trip-card.dark .label {
+  color: #ABABAB;
 }
 
 .vue-trip-card .content {
@@ -31,6 +46,14 @@
   text-align: center;
   align-items: center;
   justify-content: center;
+}
+
+.vue-trip-card.light .content {
+  color: #ABABAB;
+}
+
+.vue-trip-card.dark .content {
+  color: #FFFFFF;
 }
 
 .vue-trip-card .footer {

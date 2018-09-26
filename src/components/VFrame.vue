@@ -24,7 +24,7 @@ export default {
     },
   },
   methods: {
-    show(target, padding) {
+    show() {
       this.visible = true;
       this.destroy = false;
     },

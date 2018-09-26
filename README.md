@@ -26,17 +26,37 @@ new Vue({
 }).$mount('#app')
 ```
 
-Add in your file the `<v-trip />` object by passing the type of guide.
-
-* `popup-steps`       - Default behavior
-* `popup-frame-steps` - It maintains the default behavior, with the addition of a dark background that delimits the area of ​​the target object of the stage.
+Add the `<v-trip />` component to your file by passing the type through a configuration object.
 
 ```html
 <template>
   <div> 
-    <v-trip ref="trip" type="popup-steps" :stages="stages" />
+    <v-trip ref="trip" :configs="configs" :stages="stages" />
   </div>
 </template>
+```
+
+* `type` - Defines the behavior of the guide
+  * `popup-steps`       - Default behavior
+  * `popup-frame-steps` - It maintains the default behavior, with the addition of a dark background that delimits the area of ​​the target object of the stage.
+* `theme` - The color used by the guide, you can use `light` for a light theme and `dark` for a dark theme.
+
+```javascript
+<script>
+export default {
+  name: 'Test-Vue-Trip',
+  data() {
+    return {
+      configs: [
+        {
+          type: 'popup-steps',
+          theme: 'light',
+        },
+      ],
+    }
+  },
+};
+</script>
 ```
 
 Now we will use the `data-v-stage` property on the objects that we want our guide to interact with.
@@ -68,6 +88,12 @@ export default {
   name: 'Test-Vue-Trip',
   data() {
     return {
+      configs: [
+        {
+          type: 'popup-steps',
+          theme: 'light',
+        },
+      ],
       stages: [
         {
           target: 'example1',
@@ -95,6 +121,12 @@ export default {
   name: 'Test-Vue-Trip',
   data() {
     return {
+      configs: [
+        {
+          type: 'popup-steps',
+          theme: 'light',
+        },
+      ],
       stages: [
         {
           target: 'example1',

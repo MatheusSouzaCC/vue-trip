@@ -1,5 +1,5 @@
 <template>
-  <div class="vue-trip-card">
+  <div class="vue-trip-card" :class="[theme]">
     <div class="label">
       <slot name="label"></slot>
     </div>
@@ -25,12 +25,23 @@ export default {
     target: {
       type: String,
       required: true,
-      default: () => null,
+      default: () => {
+        return null
+      },
     },
     position: {
       type: String,
       required: false,
-      default: () => 'bottom',
+      default: () => {
+        return 'bottom'
+      },
+    },
+    theme: {
+      type: String,
+      required: false,
+      default: () => {
+        return 'light'
+      },
     },
   },
   computed: {

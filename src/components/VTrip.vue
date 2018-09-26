@@ -5,8 +5,8 @@
     <v-card
       :key="index"
       :target="stage.target"
+      :theme="configs.theme"
       :position="stage.position"
-      :id="`v-card-${currentIndex}`"
       v-for="(stage, index) in stages"
       v-if="currentIndex === Number(index)"
       class="animated fadeIn">
@@ -45,10 +45,15 @@ import VButton from './VButton.vue';
 export default {
   name: 'VTrip',
   props: {
-    type: {
-      type: String,
-      required: false,
-      default: () => 'popup-steps',
+    configs: {
+      type: Object,
+      required: true,
+      default: () => {
+        return {
+          type: 'popup-steps',
+          theme: 'light',
+        }
+      },
     },
     stages: {
       type: Array,
@@ -67,6 +72,9 @@ export default {
     };
   },
   computed: {
+    type() {
+      return this.configs.type
+    },
     targets() {
       return this.stages.map(stage => document.querySelector(`[data-v-stage="${stage.target}"]`));
     },
@@ -77,13 +85,13 @@ export default {
 
       if (this.type === 'popup-frame-steps') {
         this.$refs.VFrame.show();
-        this.targets[this.currentIndex].style['z-index'] = 9999
+        this.targets[this.currentIndex].style['z-index'] = 9999;
       }
     },
     next() {
       const nextStageIndex = this.currentIndex + 1;
 
-      this.targets[this.currentIndex].style['z-index'] = 'inherit'
+      this.targets[this.currentIndex].style['z-index'] = 'inherit';
 
       if (nextStageIndex >= this.stages.length) {
         this.finish();
@@ -93,13 +101,13 @@ export default {
 
       if (this.type === 'popup-frame-steps') {
         this.$refs.VFrame.show();
-        this.targets[this.currentIndex].style['z-index'] = 9999
+        this.targets[this.currentIndex].style['z-index'] = 9999;
       }
     },
     previous() {
       const previousStageIndex = this.currentIndex - 1;
 
-      this.targets[this.currentIndex].style['z-index'] = 'inherit'
+      this.targets[this.currentIndex].style['z-index'] = 'inherit';
 
       if (previousStageIndex < 0) {
         this.currentIndex = 0;
@@ -109,7 +117,7 @@ export default {
 
       if (this.type === 'popup-frame-steps') {
         this.$refs.VFrame.show();
-        this.targets[this.currentIndex].style['z-index'] = 9999
+        this.targets[this.currentIndex].style['z-index'] = 9999;
       }
     },
     skip() {
@@ -118,9 +126,9 @@ export default {
     finish() {
       this.currentIndex = -1;
 
-      this.targets.forEach(target => {
-        target.style['z-index'] = 'inherit'
-      })
+      this.targets.forEach((target) => {
+        target.style['z-index'] = 'inherit';
+      });
 
       if (this.type === 'popup-frame-steps') {
         this.$refs.VFrame.hide();
