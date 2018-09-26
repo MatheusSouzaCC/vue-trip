@@ -26,7 +26,7 @@ new Vue({
 }).$mount('#app')
 ```
 
-Add in your pages the `<v-trip />` object by passing the type of guide.
+Add in your file the `<v-trip />` object by passing the type of guide.
 
 * `popup-steps`       - Default behavior
 * `popup-frame-steps` - Similar to the default behavior, but adds a dark background blocking any interaction with external objects that are not related to the object of the current stage.
