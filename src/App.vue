@@ -1,8 +1,9 @@
 <template>
   <div id="app">
-    <input data-v-stage="1" type="button" value="Iniciar tutorial" @click="start"/>
+    <input data-v-stage="example1" type="button" value="Button for example" />
+    <input data-v-stage="example2" type="button" value="Other button for example" />
 
-    <v-trip ref="myTrip" type="popup-frame-steps" :stages="stages" />
+    <v-trip ref="trip" type="popup-steps" :stages="stages" />
   </div>
 </template>
 
@@ -10,24 +11,38 @@
 // import Home from './components/Home.vue';
 
 export default {
-  name: 'app',
+  name: 'Test-Vue-Trip',
   data() {
     return {
       stages: [
         {
-          target: '1',
-          title: 'Botão de inicialização',
-          content: 'Clicando nesse botão você inicia nosso tutorial.',
+          target: 'example1',
+          title: 'Button Example',
+          content: 'This is a button of example.',
           buttons: [
-            { label: 'Finalizar', color: '#3498db', action: 'finish' },
+            { label: 'Next', color: '#3498db', action: 'next' },
+            { label: 'Skip', color: null, action: 'skip' },
+          ],
+        },
+        {
+          target: 'example2',
+          title: 'Another Button Example',
+          content: 'This is another button of example.',
+          buttons: [
+            { label: 'Previous', color: '#3498db', action: 'previous' },
+            { label: 'Finish', color: '#27ae60', action: 'finish' },
+            { label: 'Skip', color: null, action: 'skip' },
           ],
         },
       ],
     };
   },
+  mounted() {
+    this.start();
+  },
   methods: {
     start() {
-      this.$refs.myTrip.go();
+      this.$refs.trip.go();
     },
   },
 };

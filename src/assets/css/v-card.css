@@ -4,6 +4,7 @@
   flex-wrap: wrap;
   max-width: 420px;
   overflow: hidden;
+  z-index: 99999999;
   position: absolute;
   border-radius: 6px;
   background: #FFFFFF;
