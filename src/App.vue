@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <input data-v-stage="example1" type="button" value="Button for example" />
+    <input data-v-stage="example1" type="button" value="Button for example" @click="start"/>
     <input data-v-stage="example2" type="button" value="Other button for example" />
 
     <v-trip ref="trip" type="popup-steps" :stages="stages" />
@@ -17,6 +17,7 @@ export default {
       stages: [
         {
           target: 'example1',
+          position: 'bottom',
           title: 'Button Example',
           content: 'This is a button of example.',
           buttons: [
@@ -26,6 +27,7 @@ export default {
         },
         {
           target: 'example2',
+          position: 'right',
           title: 'Another Button Example',
           content: 'This is another button of example.',
           buttons: [
@@ -75,6 +77,11 @@ export default {
   }
 
   #app {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-family: 'Montserrat', sans-serif;
   }
 </style>

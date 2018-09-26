@@ -4,8 +4,8 @@
 
     <v-card
       :key="index"
-      :params="params"
       :target="stage.target"
+      :position="stage.position"
       :id="`v-card-${currentIndex}`"
       v-for="(stage, index) in stages"
       v-if="currentIndex === Number(index)"
@@ -62,20 +62,7 @@ export default {
   },
   data() {
     return {
-      running: false,
       currentIndex: -1,
-      params: {
-        placement: 'bottom',
-        modifiers: {
-          flip: {
-            behavior: ['left', 'right', 'top', 'bottom'],
-          },
-          offset: {
-            enabled: true,
-            offset: '0,10',
-          },
-        },
-      },
     };
   },
   computed: {

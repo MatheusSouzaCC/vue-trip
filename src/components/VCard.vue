@@ -1,5 +1,5 @@
 <template>
-  <div class="vue-trip-card" :id="`v-stage-${uuid}`" ref="card">
+  <div class="vue-trip-card">
     <div class="label">
       <slot name="label"></slot>
     </div>
@@ -18,7 +18,6 @@
 
 <script>
 import Popper from 'popper.js';
-import UUID from 'uuid/v1';
 
 export default {
   name: 'VCard',
@@ -26,17 +25,32 @@ export default {
     target: {
       type: String,
       required: true,
-      default: () => 0,
+      default: () => {
+        return null
+      },
     },
-    params: {
-      type: Object,
-      required: true,
-      default: () => ({}),
+    position: {
+      type: String,
+      required: false,
+      default: () => {
+        return 'bottom'
+      },
     },
   },
   computed: {
-    uuid() {
-      return UUID();
+    params() {
+      return {
+        placement: this.position,
+        modifiers: {
+          flip: {
+            behavior: ['left', 'right', 'top', 'bottom'],
+          },
+          offset: {
+            enabled: true,
+            offset: '0,10',
+          },
+        },
+      }
     },
   },
   mounted() {
