@@ -29,7 +29,7 @@ new Vue({
 Add in your file the `<v-trip />` object by passing the type of guide.
 
 * `popup-steps`       - Default behavior
-* `popup-frame-steps` - Similar to the default behavior, but adds a dark background blocking any interaction with external objects that are not related to the object of the current stage.
+* `popup-frame-steps` - It maintains the default behavior, with the addition of a dark background that delimits the area of ​​the target object of the stage.
 
 ```html
 <template>
@@ -53,13 +53,14 @@ Now we will use the `data-v-stage` property on the objects that we want our guid
 ```
 In the `data` property of your file we will create a variable `stages` and in it we will pass all the configurations of the stages that our guide will have.
 
-* `target`  - Object referring to that stage of the guide.
-* `title`   - Title to be displayed on the head of card.
-* `content` - Content that will be shown in the body of the card (accepts html tags).
-* `buttons` - Interaction buttons that will be shown on the card's bottom.
-  * `label`  - Label that will be shown without button.
-  * `color`  - Button fill color.
-  * `action` - Interaction functions `next`, `previous`, `skip`, `finish` with the guide (accepts custom functions)
+* `target`    - Object referring to that stage of the guide.
+* `position`  - Where the card will be positioned relative to its target object.
+* `title`     - Title to be displayed on the head of card.
+* `content`   - Content that will be shown in the body of the card (accepts html tags).
+* `buttons`   - Interaction buttons that will be shown on the card's bottom.
+  * `label`   - Label that will be shown without button.
+  * `color`   - Button fill color.
+  * `action`  - Interaction functions `next`, `previous`, `skip`, `finish` with the guide (accepts custom functions)
 
 ```javascript
 <script>

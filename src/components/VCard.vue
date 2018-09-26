@@ -25,16 +25,12 @@ export default {
     target: {
       type: String,
       required: true,
-      default: () => {
-        return null
-      },
+      default: () => null,
     },
     position: {
       type: String,
       required: false,
-      default: () => {
-        return 'bottom'
-      },
+      default: () => 'bottom',
     },
   },
   computed: {
@@ -50,7 +46,7 @@ export default {
             offset: '0,10',
           },
         },
-      }
+      };
     },
   },
   mounted() {
