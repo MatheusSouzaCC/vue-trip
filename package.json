@@ -1,7 +1,7 @@
 {
   "name": "vue-trip",
   "version": "0.1.1",
-  "description": "",
+  "description": "Vue Trip is a lightweight and customizable plug-in that allows an easy and efficient way to guide your users in your application",
   "author": "Bruno Santos <bruno.dos1997@gmail.com>",
   "license": "MIT",
   "main": "dist/vue-trip.common.js",
@@ -12,7 +12,12 @@
   },
   "keywords": [
     "vue",
-    "trip"
+    "trip",
+    "travel",
+    "tour",
+    "guide",
+    "journey",
+    "tutorial"
   ],
   "scripts": {
     "serve": "vue-cli-service serve",
