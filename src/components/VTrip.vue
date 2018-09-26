@@ -24,8 +24,9 @@
           :color="button.color"
           style="margin: 2px"
           v-for="(button, index) in stage.buttons"
-          @click.native="returnAction(button.action)"> {{ button.label }} </v-button>
-
+          @click.native="returnAction(button.action)">
+            {{ button.label }}
+          </v-button>
       </div>
     </v-card>
 
@@ -75,11 +76,14 @@ export default {
       this.currentIndex = 0;
 
       if (this.type === 'popup-frame-steps') {
-        this.$refs.VFrame.show(this.targets[this.currentIndex], 4);
+        this.$refs.VFrame.show();
+        this.targets[this.currentIndex].style['z-index'] = 9999
       }
     },
     next() {
       const nextStageIndex = this.currentIndex + 1;
+
+      this.targets[this.currentIndex].style['z-index'] = 'inherit'
 
       if (nextStageIndex >= this.stages.length) {
         this.finish();
@@ -88,11 +92,14 @@ export default {
       }
 
       if (this.type === 'popup-frame-steps') {
-        this.$refs.VFrame.show(this.targets[this.currentIndex], 4);
+        this.$refs.VFrame.show();
+        this.targets[this.currentIndex].style['z-index'] = 9999
       }
     },
     previous() {
       const previousStageIndex = this.currentIndex - 1;
+
+      this.targets[this.currentIndex].style['z-index'] = 'inherit'
 
       if (previousStageIndex < 0) {
         this.currentIndex = 0;
@@ -101,7 +108,8 @@ export default {
       }
 
       if (this.type === 'popup-frame-steps') {
-        this.$refs.VFrame.show(this.targets[this.currentIndex], 4);
+        this.$refs.VFrame.show();
+        this.targets[this.currentIndex].style['z-index'] = 9999
       }
     },
     skip() {
@@ -109,6 +117,10 @@ export default {
     },
     finish() {
       this.currentIndex = -1;
+
+      this.targets.forEach(target => {
+        target.style['z-index'] = 'inherit'
+      })
 
       if (this.type === 'popup-frame-steps') {
         this.$refs.VFrame.hide();

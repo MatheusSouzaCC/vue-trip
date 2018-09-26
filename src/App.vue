@@ -3,12 +3,11 @@
     <input data-v-stage="example1" type="button" value="Button for example" @click="start"/>
     <input data-v-stage="example2" type="button" value="Other button for example" />
 
-    <v-trip ref="trip" type="popup-steps" :stages="stages" />
+    <v-trip ref="trip" type="popup-frame-steps" :stages="stages" />
   </div>
 </template>
 
 <script>
-// import Home from './components/Home.vue';
 
 export default {
   name: 'Test-Vue-Trip',

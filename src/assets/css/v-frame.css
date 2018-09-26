@@ -1,5 +1,9 @@
 .v-frame {
-  z-index: 9999999;
-  position: absolute;
-  background: rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 999;
+  height: 100vh;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.8);
 }
