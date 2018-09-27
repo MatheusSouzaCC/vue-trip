@@ -38,6 +38,10 @@
 </style>
 
 <script>
+// HELPERS
+import { isNull } from 'lodash';
+
+// COMPONENTS
 import VCard from './VCard.vue';
 import VFrame from './VFrame.vue';
 import VButton from './VButton.vue';
@@ -85,9 +89,17 @@ export default {
         this.$refs.VFrame.show();
         this.targets[this.currentIndex].style['z-index'] = 9999;
       }
+
+      return true;
     },
     next() {
       const nextStageIndex = this.currentIndex + 1;
+
+      if (isNull(this.targets[nextStageIndex])) {
+        console.error(`Element target '${this.stages[nextStageIndex].target}' not exists.`);
+
+        return false;
+      }
 
       this.targets[this.currentIndex].style['z-index'] = 'inherit';
 
@@ -100,6 +112,8 @@ export default {
       if (this.type === 'popup-frame-steps') {
         this.targets[this.currentIndex].style['z-index'] = 9999;
       }
+
+      return true;
     },
     previous() {
       const previousStageIndex = this.currentIndex - 1;
@@ -115,20 +129,26 @@ export default {
       if (this.type === 'popup-frame-steps') {
         this.targets[this.currentIndex].style['z-index'] = 9999;
       }
+
+      return true;
     },
     skip() {
-      this.finish();
+      return this.finish();
     },
     finish() {
       this.currentIndex = -1;
 
       this.targets.forEach((target) => {
-        target.style['z-index'] = 'inherit';
+        if (!isNull(target)) {
+          target.style['z-index'] = 'inherit';
+        }
       });
 
       if (this.type === 'popup-frame-steps') {
         this.$refs.VFrame.hide();
       }
+
+      return true;
     },
     returnAction(action) {
       switch (action) {

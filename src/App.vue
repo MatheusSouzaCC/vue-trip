@@ -24,12 +24,25 @@ export default {
           title: 'Button Example',
           content: 'This is a button of example.',
           buttons: [
+            { label: 'Previous', color: '#3498db', action: 'previous' },
             { label: 'Next', color: '#3498db', action: 'next' },
             { label: 'Skip', color: null, action: 'skip' },
           ],
         },
         {
           target: 'example2',
+          position: 'right',
+          title: 'Another Button Example',
+          content: 'This is another button of example.',
+          buttons: [
+            { label: 'Previous', color: '#3498db', action: 'previous' },
+            { label: 'Next', color: '#3498db', action: 'next' },
+            { label: 'Finish', color: '#27ae60', action: 'finish' },
+            { label: 'Skip', color: null, action: 'skip' },
+          ],
+        },
+        {
+          target: 'example3',
           position: 'right',
           title: 'Another Button Example',
           content: 'This is another button of example.',
