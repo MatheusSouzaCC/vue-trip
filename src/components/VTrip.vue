@@ -98,7 +98,6 @@ export default {
       }
 
       if (this.type === 'popup-frame-steps') {
-        this.$refs.VFrame.show();
         this.targets[this.currentIndex].style['z-index'] = 9999;
       }
     },
@@ -114,7 +113,6 @@ export default {
       }
 
       if (this.type === 'popup-frame-steps') {
-        this.$refs.VFrame.show();
         this.targets[this.currentIndex].style['z-index'] = 9999;
       }
     },

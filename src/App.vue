@@ -42,9 +42,9 @@ export default {
       ],
     };
   },
-  mounted() {
-    this.start();
-  },
+  // mounted() {
+  //   this.start();
+  // },
   methods: {
     start() {
       this.$refs.trip.go();
