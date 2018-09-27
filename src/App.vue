@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <input data-v-stage="example1" type="button" value="Button for example" @click="start"/>
-    <input data-v-stage="example2" type="button" value="Other button for example" />
+    <input data-v-stage="example1" type="button" value="Button for example" @click="start" />
+    <input data-v-stage="example2" type="button" id="test" value="Other button for example" />
 
     <v-trip ref="trip" :configs="configs" :stages="stages" />
   </div>
@@ -24,25 +24,12 @@ export default {
           title: 'Button Example',
           content: 'This is a button of example.',
           buttons: [
-            { label: 'Previous', color: '#3498db', action: 'previous' },
             { label: 'Next', color: '#3498db', action: 'next' },
             { label: 'Skip', color: null, action: 'skip' },
           ],
         },
         {
           target: 'example2',
-          position: 'right',
-          title: 'Another Button Example',
-          content: 'This is another button of example.',
-          buttons: [
-            { label: 'Previous', color: '#3498db', action: 'previous' },
-            { label: 'Next', color: '#3498db', action: 'next' },
-            { label: 'Finish', color: '#27ae60', action: 'finish' },
-            { label: 'Skip', color: null, action: 'skip' },
-          ],
-        },
-        {
-          target: 'example3',
           position: 'right',
           title: 'Another Button Example',
           content: 'This is another button of example.',
@@ -55,9 +42,9 @@ export default {
       ],
     };
   },
-  // mounted() {
-  //   this.start();
-  // },
+  mounted() {
+    this.start();
+  },
   methods: {
     start() {
       this.$refs.trip.go();
@@ -99,5 +86,10 @@ export default {
     align-items: center;
     justify-content: center;
     font-family: 'Montserrat', sans-serif;
+  }
+
+  #test {
+    position: absolute;
+    top: 50px;
   }
 </style>

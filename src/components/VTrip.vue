@@ -87,7 +87,7 @@ export default {
 
       if (this.type === 'popup-frame-steps') {
         this.$refs.VFrame.show();
-        this.targets[this.currentIndex].style['z-index'] = 9999;
+        this.prepareTarget(this.targets[this.currentIndex])
       }
 
       return true;
@@ -95,13 +95,19 @@ export default {
     next() {
       const nextStageIndex = this.currentIndex + 1;
 
-      if (isNull(this.targets[nextStageIndex])) {
+      if (!this.stages[nextStageIndex]) {
+        console.error(`The stage you are trying to access does not exist in the stage array.`);
+
+        return false;
+      }
+
+      if (!this.targets[nextStageIndex]) {
         console.error(`Element target '${this.stages[nextStageIndex].target}' not exists.`);
 
         return false;
       }
 
-      this.targets[this.currentIndex].style['z-index'] = 'inherit';
+      this.resetTarget(this.targets[this.currentIndex])
 
       if (nextStageIndex >= this.stages.length) {
         this.finish();
@@ -110,7 +116,7 @@ export default {
       }
 
       if (this.type === 'popup-frame-steps') {
-        this.targets[this.currentIndex].style['z-index'] = 9999;
+        this.prepareTarget(this.targets[this.currentIndex])
       }
 
       return true;
@@ -118,7 +124,7 @@ export default {
     previous() {
       const previousStageIndex = this.currentIndex - 1;
 
-      this.targets[this.currentIndex].style['z-index'] = 'inherit';
+      this.resetTarget(this.targets[this.currentIndex])
 
       if (previousStageIndex < 0) {
         this.currentIndex = 0;
@@ -127,7 +133,7 @@ export default {
       }
 
       if (this.type === 'popup-frame-steps') {
-        this.targets[this.currentIndex].style['z-index'] = 9999;
+        this.prepareTarget(this.targets[this.currentIndex])
       }
 
       return true;
@@ -138,9 +144,9 @@ export default {
     finish() {
       this.currentIndex = -1;
 
-      this.targets.forEach((target) => {
+      this.targets.forEach(target => {
         if (!isNull(target)) {
-          target.style['z-index'] = 'inherit';
+          this.resetTarget(target)
         }
       });
 
@@ -164,6 +170,18 @@ export default {
           return action();
       }
     },
+    prepareTarget(target) {
+      const style = window.getComputedStyle(target);
+
+      target.style['z-index'] = 9999;
+
+      if (style.getPropertyValue('position') === 'static') {
+        target.style['position'] = 'relative';
+      }
+    },
+    resetTarget(target) {
+      target.style['z-index'] = 'inherit';
+    }
   },
 };
 </script>
