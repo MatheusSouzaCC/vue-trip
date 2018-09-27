@@ -87,7 +87,7 @@ export default {
 
       if (this.type === 'popup-frame-steps') {
         this.$refs.VFrame.show();
-        this.prepareTarget(this.targets[this.currentIndex])
+        this.prepareTarget(this.targets[this.currentIndex]);
       }
 
       return true;
@@ -96,7 +96,7 @@ export default {
       const nextStageIndex = this.currentIndex + 1;
 
       if (!this.stages[nextStageIndex]) {
-        console.error(`The stage you are trying to access does not exist in the stage array.`);
+        console.error('The stage you are trying to access does not exist in the stage array.');
 
         return false;
       }
@@ -107,7 +107,7 @@ export default {
         return false;
       }
 
-      this.resetTarget(this.targets[this.currentIndex])
+      this.resetTarget(this.targets[this.currentIndex]);
 
       if (nextStageIndex >= this.stages.length) {
         this.finish();
@@ -116,7 +116,7 @@ export default {
       }
 
       if (this.type === 'popup-frame-steps') {
-        this.prepareTarget(this.targets[this.currentIndex])
+        this.prepareTarget(this.targets[this.currentIndex]);
       }
 
       return true;
@@ -124,7 +124,7 @@ export default {
     previous() {
       const previousStageIndex = this.currentIndex - 1;
 
-      this.resetTarget(this.targets[this.currentIndex])
+      this.resetTarget(this.targets[this.currentIndex]);
 
       if (previousStageIndex < 0) {
         this.currentIndex = 0;
@@ -133,7 +133,7 @@ export default {
       }
 
       if (this.type === 'popup-frame-steps') {
-        this.prepareTarget(this.targets[this.currentIndex])
+        this.prepareTarget(this.targets[this.currentIndex]);
       }
 
       return true;
@@ -144,9 +144,9 @@ export default {
     finish() {
       this.currentIndex = -1;
 
-      this.targets.forEach(target => {
+      this.targets.forEach((target) => {
         if (!isNull(target)) {
-          this.resetTarget(target)
+          this.resetTarget(target);
         }
       });
 
@@ -176,12 +176,12 @@ export default {
       target.style['z-index'] = 9999;
 
       if (style.getPropertyValue('position') === 'static') {
-        target.style['position'] = 'relative';
+        target.style.position = 'relative';
       }
     },
     resetTarget(target) {
       target.style['z-index'] = 'inherit';
-    }
+    },
   },
 };
 </script>
