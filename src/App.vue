@@ -16,7 +16,7 @@ export default {
       configs: {
         type: 'popup-frame-steps',
         theme: 'light',
-        spacing: 16,
+        spacing: 1,
       },
       stages: [
         {

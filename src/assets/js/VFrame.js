@@ -8,44 +8,56 @@ export default class VFrame {
   rectTopProperties(target) {
     const targetRect = target.getBoundingClientRect();
 
+    const height = (targetRect.top - this.padding);
+    const width = target.offsetWidth + (this.padding * 2);
+
     return {
       top: 0,
       left: targetRect.left - this.padding,
-      height: targetRect.top - this.padding,
-      width: target.offsetWidth + (this.padding * 2),
+      height: (height < 0) ? 0 : height,
+      width: (width < 0) ? 0 : width,
     };
   }
 
   rectRightProperties(target) {
     const targetRect = target.getBoundingClientRect();
 
+    const height = window.innerHeight;
+    const width = (window.innerWidth - targetRect.left) + (target.offsetWidth + this.padding);
+
     return {
       top: 0,
-      left: targetRect.left + target.offsetWidth + this.padding,
-      height: window.innerHeight,
-      width: window.innerWidth - targetRect.left + target.offsetWidth + this.padding,
+      left: (targetRect.left + target.offsetWidth) + this.padding,
+      height: (height < 0) ? 0 : height,
+      width: (width < 0) ? 0 : width,
     };
   }
 
   rectBottomProperties(target) {
     const targetRect = target.getBoundingClientRect();
 
+    const height = (window.innerHeight - targetRect.top) + (target.offsetHeight + this.padding);
+    const width = target.offsetWidth + (this.padding * 2);
+
     return {
-      top: targetRect.top + target.offsetHeight + this.padding,
+      top: (targetRect.top + target.offsetHeight) + this.padding,
       left: targetRect.left - this.padding,
-      height: window.innerHeight - targetRect.top + target.offsetHeight + this.padding,
-      width: target.offsetWidth + (this.padding * 2),
+      height: (height < 0) ? 0 : height,
+      width: (width < 0) ? 0 : width,
     };
   }
 
   rectLeftProperties(target) {
     const targetRect = target.getBoundingClientRect();
 
+    const height = window.innerHeight;
+    const width = targetRect.left - this.padding;
+
     return {
       top: 0,
       left: 0,
-      height: window.innerHeight,
-      width: targetRect.left - this.padding,
+      height: (height < 0) ? 0 : height,
+      width: (width < 0) ? 0 : width,
     };
   }
 
