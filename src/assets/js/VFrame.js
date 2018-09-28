@@ -54,10 +54,10 @@ export default class VFrame {
 
     el.innerHTML = '';
 
-    el.style.top = `${top}px`;
-    el.style.left = `${left}px`;
-    el.style.width = `${width}px`;
-    el.style.height = `${height}px`;
+    el.style.top = `${top}px !important`;
+    el.style.left = `${left}px !important`;
+    el.style.width = `${width}px !important`;
+    el.style.height = `${height}px !important`;
 
     el.setAttribute('id', id);
     el.classList.add('v-frame', 'animated', this.fadeIn);
@@ -97,10 +97,10 @@ export default class VFrame {
   updateFrame(id, rect) {
     const el = document.getElementById(id);
 
-    el.style.top = `${rect.top}px`;
-    el.style.left = `${rect.left}px`;
-    el.style.width = `${rect.width}px`;
-    el.style.height = `${rect.height}px`;
+    el.style.top = `${rect.top}px !important`;
+    el.style.left = `${rect.left}px !important`;
+    el.style.width = `${rect.width}px !important`;
+    el.style.height = `${rect.height}px !important`;
   }
 
   create(target) {
