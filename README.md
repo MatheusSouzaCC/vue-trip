@@ -40,6 +40,7 @@ Add the `<v-trip />` component to your file by passing the type through a config
   * `popup-steps`       - Default behavior
   * `popup-frame-steps` - It maintains the default behavior, with the addition of a dark background that delimits the area of ​​the target object of the stage.
 * `theme` - The color used by the guide, you can use `light` for a light theme and `dark` for a dark theme.
+* `spacing` - Adds a spacing between the component and the card. If you are using `popup-frame-steps` this spacing will be applied to the frame as well.
 
 ```javascript
 <script>
@@ -51,6 +52,7 @@ export default {
         {
           type: 'popup-steps',
           theme: 'light',
+          spacing: 4,
         },
       ],
     }

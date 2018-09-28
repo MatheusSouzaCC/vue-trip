@@ -32,6 +32,11 @@ export default {
       required: false,
       default: () => 'bottom',
     },
+    offset: {
+      type: Number,
+      required: false,
+      default: () => 10,
+    },
     theme: {
       type: String,
       required: false,
@@ -48,7 +53,7 @@ export default {
           },
           offset: {
             enabled: true,
-            offset: '0,10',
+            offset: `0,${this.offset}`,
           },
         },
       };

@@ -1,12 +1,11 @@
 <template>
   <div>
-    <v-frame ref="VFrame" v-if="type === 'popup-frame-steps'" />
-
     <v-card
       :key="index"
       :target="stage.target"
       :theme="configs.theme"
       :position="stage.position"
+      :offset="configs.spacing + 5"
       v-for="(stage, index) in stages"
       v-if="currentIndex === Number(index)"
       class="animated fadeIn">
@@ -35,16 +34,14 @@
 
 <style>
   @import '../assets/css/animate.css';
+  @import '../assets/css/v-frame.css';
 </style>
 
 <script>
-// HELPERS
-import { isNull } from 'lodash';
-
 // COMPONENTS
 import VCard from './VCard.vue';
-import VFrame from './VFrame.vue';
 import VButton from './VButton.vue';
+import VFrame from '../assets/js/VFrame';
 
 export default {
   name: 'VTrip',
@@ -55,6 +52,7 @@ export default {
       default: () => ({
         type: 'popup-steps',
         theme: 'light',
+        spacing: 4,
       }),
     },
     stages: {
@@ -65,12 +63,13 @@ export default {
   },
   components: {
     VCard,
-    VFrame,
     VButton,
   },
   data() {
     return {
+      running: false,
       currentIndex: -1,
+      frame: new VFrame(this.configs.spacing, 'fadeIn', 'fadeOut'),
     };
   },
   computed: {
@@ -83,11 +82,26 @@ export default {
   },
   methods: {
     go() {
+      if (this.stages.length <= 0) {
+        console.error('Your array of stages is empty.');
+
+        return false;
+      }
+
+      if (this.running) {
+        console.error('You already have an instance running.');
+
+        return false;
+      }
+
+      this.running = true;
+
+      this.frame.destroy();
+
       this.currentIndex = 0;
 
       if (this.type === 'popup-frame-steps') {
-        this.$refs.VFrame.show();
-        this.prepareTarget(this.targets[this.currentIndex]);
+        this.frame.create(this.targets[this.currentIndex]);
       }
 
       return true;
@@ -107,8 +121,6 @@ export default {
         return false;
       }
 
-      this.resetTarget(this.targets[this.currentIndex]);
-
       if (nextStageIndex >= this.stages.length) {
         this.finish();
       } else {
@@ -116,15 +128,13 @@ export default {
       }
 
       if (this.type === 'popup-frame-steps') {
-        this.prepareTarget(this.targets[this.currentIndex]);
+        this.frame.recalculate(this.targets[this.currentIndex]);
       }
 
       return true;
     },
     previous() {
       const previousStageIndex = this.currentIndex - 1;
-
-      this.resetTarget(this.targets[this.currentIndex]);
 
       if (previousStageIndex < 0) {
         this.currentIndex = 0;
@@ -133,7 +143,7 @@ export default {
       }
 
       if (this.type === 'popup-frame-steps') {
-        this.prepareTarget(this.targets[this.currentIndex]);
+        this.frame.recalculate(this.targets[this.currentIndex]);
       }
 
       return true;
@@ -142,16 +152,12 @@ export default {
       return this.finish();
     },
     finish() {
+      this.running = false;
+
       this.currentIndex = -1;
 
-      this.targets.forEach((target) => {
-        if (!isNull(target)) {
-          this.resetTarget(target);
-        }
-      });
-
       if (this.type === 'popup-frame-steps') {
-        this.$refs.VFrame.hide();
+        this.frame.destroy();
       }
 
       return true;
@@ -169,18 +175,6 @@ export default {
         default:
           return action();
       }
-    },
-    prepareTarget(target) {
-      const style = window.getComputedStyle(target);
-
-      target.style['z-index'] = 9999;
-
-      if (style.getPropertyValue('position') === 'static') {
-        target.style.position = 'relative';
-      }
-    },
-    resetTarget(target) {
-      target.style['z-index'] = 'inherit';
     },
   },
 };
