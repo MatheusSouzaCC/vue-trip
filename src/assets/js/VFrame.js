@@ -44,7 +44,7 @@ export default class VFrame {
     return {
       top: 0,
       left: 0,
-      height: window.height,
+      height: window.innerHeight,
       width: targetRect.left - this.padding,
     };
   }
