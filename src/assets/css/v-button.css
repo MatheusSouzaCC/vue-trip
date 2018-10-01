@@ -26,3 +26,10 @@
 .v-button.rounded {
   border-radius: 4px;
 }
+
+.v-button:disabled,
+.v-button[disabled=disabled] {
+  cursor: not-allowed;
+  color: #666666 !important;
+  background: #dddddd !important;
+}

@@ -27,6 +27,7 @@ export default {
           content: 'This is a button of example.',
           buttons: [
             { label: 'Next', color: '#3498db', action: 'next' },
+            { label: 'Go To Button Example', color: '#3498db', action: 'goTo::3' },
             { label: 'Skip', color: null, action: 'skip' },
           ],
         },
@@ -47,8 +48,16 @@ export default {
           content: 'This is another button of example.',
           buttons: [
             { label: 'Previous', color: '#3498db', action: 'previous' },
-            { label: 'Go To Button Example', color: '#3498db', action: 'goTo::example1' },
             { label: 'Finish', color: '#27ae60', action: 'finish' },
+          ],
+        },
+        {
+          target: 'example1',
+          position: 'right',
+          title: 'Finish',
+          content: 'Finish tour!.',
+          buttons: [
+            { label: 'Ok!', color: '#27ae60', action: 'finish' },
           ],
         },
       ],

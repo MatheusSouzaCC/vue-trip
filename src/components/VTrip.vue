@@ -38,9 +38,6 @@
 </style>
 
 <script>
-// HELPERS
-import { findIndex } from 'lodash';
-
 // COMPONENTS
 import VCard from './VCard.vue';
 import VButton from './VButton.vue';
@@ -152,9 +149,13 @@ export default {
       return true;
     },
     goTo(target) {
-      const targetIndex = findIndex(this.stages, { target });
+      if (!this.stages[target]) {
+        console.error(`The stage "${target}" you are trying to go to does not defined in array of stages.`);
 
-      this.currentIndex = targetIndex;
+        return false;
+      }
+
+      this.currentIndex = target;
 
       if (this.type === 'popup-frame-steps') {
         this.frame.recalculate(this.targets[this.currentIndex]);
@@ -193,8 +194,8 @@ export default {
         return this.finish();
       }
 
-      if (action.includes('goTo')) {
-        return this.goTo(action.substr(action.indexOf('::') + '::'.length));
+      if (typeof action === 'string' && action.includes('goTo')) {
+        return this.goTo(Number(action.substr(action.indexOf('::') + '::'.length)));
       }
 
       return action();
