@@ -38,6 +38,9 @@
 </style>
 
 <script>
+// HELPERS
+import { findIndex } from 'lodash';
+
 // COMPONENTS
 import VCard from './VCard.vue';
 import VButton from './VButton.vue';
@@ -148,6 +151,17 @@ export default {
 
       return true;
     },
+    goTo(target) {
+      const targetIndex = findIndex(this.stages, { target });
+
+      this.currentIndex = targetIndex;
+
+      if (this.type === 'popup-frame-steps') {
+        this.frame.recalculate(this.targets[this.currentIndex]);
+      }
+
+      return true;
+    },
     skip() {
       return this.finish();
     },
@@ -163,18 +177,27 @@ export default {
       return true;
     },
     returnAction(action) {
-      switch (action) {
-        case 'next':
-          return this.next();
-        case 'previous':
-          return this.previous();
-        case 'skip':
-          return this.skip();
-        case 'finish':
-          return this.finish();
-        default:
-          return action();
+      if (action === 'next') {
+        return this.next();
       }
+
+      if (action === 'previous') {
+        return this.previous();
+      }
+
+      if (action === 'skip') {
+        return this.skip();
+      }
+
+      if (action === 'finish') {
+        return this.finish();
+      }
+
+      if (action.includes('goTo')) {
+        return this.goTo(action.substr(action.indexOf('::') + '::'.length));
+      }
+
+      return action();
     },
   },
 };

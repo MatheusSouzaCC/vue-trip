@@ -2,6 +2,7 @@
   <div id="app">
     <input data-v-stage="example1" type="button" value="Button for example" @click="start" />
     <input data-v-stage="example2" type="button" id="test" value="Other button for example" />
+    <input data-v-stage="example3" type="button" id="test2" value="Other button for example 3" />
 
     <v-trip ref="trip" :configs="configs" :stages="stages" />
   </div>
@@ -36,8 +37,18 @@ export default {
           content: 'This is another button of example.',
           buttons: [
             { label: 'Previous', color: '#3498db', action: 'previous' },
+            { label: 'next', color: '#3498db', action: 'next' },
+          ],
+        },
+        {
+          target: 'example3',
+          position: 'right',
+          title: 'Another Button Example',
+          content: 'This is another button of example.',
+          buttons: [
+            { label: 'Previous', color: '#3498db', action: 'previous' },
+            { label: 'Go To Button Example', color: '#3498db', action: 'goTo::example1' },
             { label: 'Finish', color: '#27ae60', action: 'finish' },
-            { label: 'Skip', color: null, action: 'skip' },
           ],
         },
       ],
@@ -92,5 +103,10 @@ export default {
   #test {
     position: absolute;
     top: 50px;
+  }
+
+  #test2 {
+    position: absolute;
+    top: 150px;
   }
 </style>
