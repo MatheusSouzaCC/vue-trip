@@ -28,7 +28,7 @@ export default {
           buttons: [
             { label: 'Next', color: '#3498db', action: 'next' },
             { label: 'Go To Button Example', color: '#3498db', action: 'goTo::3' },
-            { label: 'Skip', color: null, action: 'skip' },
+            { label: 'Skip', color: '#f44336', action: 'skip' },
           ],
         },
         {
