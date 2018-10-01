@@ -148,6 +148,21 @@ export default {
 
       return true;
     },
+    goTo(target) {
+      if (!this.stages[target]) {
+        console.error(`The stage "${target}" you are trying to go to does not defined in array of stages.`);
+
+        return false;
+      }
+
+      this.currentIndex = target;
+
+      if (this.type === 'popup-frame-steps') {
+        this.frame.recalculate(this.targets[this.currentIndex]);
+      }
+
+      return true;
+    },
     skip() {
       return this.finish();
     },
@@ -163,18 +178,27 @@ export default {
       return true;
     },
     returnAction(action) {
-      switch (action) {
-        case 'next':
-          return this.next();
-        case 'previous':
-          return this.previous();
-        case 'skip':
-          return this.skip();
-        case 'finish':
-          return this.finish();
-        default:
-          return action();
+      if (action === 'next') {
+        return this.next();
       }
+
+      if (action === 'previous') {
+        return this.previous();
+      }
+
+      if (action === 'skip') {
+        return this.skip();
+      }
+
+      if (action === 'finish') {
+        return this.finish();
+      }
+
+      if (typeof action === 'string' && action.includes('goTo')) {
+        return this.goTo(Number(action.substr(action.indexOf('::') + '::'.length)));
+      }
+
+      return action();
     },
   },
 };

@@ -82,7 +82,7 @@ In the `data` property of your file we will create a variable `stages` and in it
 * `buttons`   - Interaction buttons that will be shown on the card's bottom.
   * `label`   - Label that will be shown without button.
   * `color`   - Button fill color.
-  * `action`  - Interaction functions `next`, `previous`, `skip`, `finish` with the guide (accepts custom functions)
+  * `action`  - Interaction functions `next`, `previous`, `skip`, `finish`, `goTo::(Index of the stage you want to go. ex: 0 )` with the guide (accepts custom functions)
 
 ```javascript
 <script>
@@ -104,6 +104,7 @@ export default {
           buttons: [
             { label: 'Next', color: '#3498db', action: 'next' },
             { label: 'Skip', color: null, action: 'skip' },
+            { label: 'Go To', color: null, action: 'goTo::0' },
             { label: 'Custom function', color: null, action: () => {
                 return alert('Custom function :D')
               }
