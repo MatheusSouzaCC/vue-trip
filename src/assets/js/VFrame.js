@@ -93,7 +93,9 @@ export default class VFrame {
   }
 
   appendFrame(id, rect) {
-    document.body.appendChild(this.mountDiv(id, rect.top, rect.left, rect.height, rect.width));
+    const vtrip = document.getElementById('v-trip')
+
+    vtrip.appendChild(this.mountDiv(id, rect.top, rect.left, rect.height, rect.width));
   }
 
   removeFrame(id) {
@@ -101,7 +103,9 @@ export default class VFrame {
 
     if (el) {
       setTimeout(() => {
-        document.body.removeChild(el);
+        const vtrip = document.getElementById('v-trip')
+
+        vtrip.removeChild(el);
       }, 500);
     }
   }

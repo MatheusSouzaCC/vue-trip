@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="v-trip">
     <v-card
       :key="index"
       :target="stage.target"
