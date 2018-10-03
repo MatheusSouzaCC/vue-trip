@@ -36,11 +36,11 @@ Add the `<v-trip />` component to your file by passing the type through a config
 </template>
 ```
 
-* `type` - Defines the behavior of the guide
+* `type`                - Defines the behavior of the guide. <String>
   * `popup-steps`       - Default behavior
   * `popup-frame-steps` - It maintains the default behavior, with the addition of a dark background that delimits the area of ​​the target object of the stage.
-* `theme` - The color used by the guide, you can use `light` for a light theme and `dark` for a dark theme.
-* `spacing` - Adds a spacing between the component and the card. If you are using `popup-frame-steps` this spacing will be applied to the frame as well.
+* `theme`               - The color used by the guide, you can use `light` for a light theme and `dark` for a dark theme. <String>
+* `spacing`             - Adds a spacing between the component and the card. If you are using `popup-frame-steps` this spacing will be applied to the frame as well. <Integer>
 
 ```javascript
 <script>
@@ -75,14 +75,15 @@ Now we will use the `data-v-stage` property on the objects that we want our guid
 ```
 In the `data` property of your file we will create a variable `stages` and in it we will pass all the configurations of the stages that our guide will have.
 
-* `target`    - Object referring to that stage of the guide.
-* `position`  - Where the card will be positioned relative to its target object.
-* `title`     - Title to be displayed on the head of card.
-* `content`   - Content that will be shown in the body of the card (accepts html tags).
-* `buttons`   - Interaction buttons that will be shown on the card's bottom.
-  * `label`   - Label that will be shown without button.
-  * `color`   - Button fill color.
-  * `action`  - Interaction functions `next`, `previous`, `skip`, `finish`, `goTo::(Index of the stage you want to go. ex: 0 )` with the guide (accepts custom functions)
+* `target`    - Object referring to that stage of the guide. <String>
+* `position`  - Where the card will be positioned relative to its target object. <String>
+* `ignore`    - If `true` will skip this stage and continue the cycle. <Boolean>
+* `title`     - Title to be displayed on the head of card. <String>
+* `content`   - Content that will be shown in the body of the card (accepts html tags). <String>
+* `buttons`   - Interaction buttons that will be shown on the card's bottom. <Collection>
+  * `label`   - Label that will be shown without button. <String>
+  * `color`   - Button fill color. <String>
+  * `action`  - Interaction functions `next`, `previous`, `skip`, `finish`, `goTo::(Index of the stage you want to go. ex: 0 )` with the guide (accepts custom functions) <String/Function>
 
 ```javascript
 <script>

@@ -81,6 +81,13 @@ export default {
     },
   },
   methods: {
+    getStage(stageIndex) {
+      if (this.stages[stageIndex].hasOwnProperty('ignore') && this.stages[stageIndex].ignore) {
+        return stageIndex + 1
+      }
+
+      return stageIndex
+    },
     go() {
       if (this.stages.length <= 0) {
         console.error('Your array of stages is empty.');
@@ -98,7 +105,7 @@ export default {
 
       this.frame.destroy();
 
-      this.currentIndex = 0;
+      this.currentIndex = this.getStage(0);
 
       if (this.type === 'popup-frame-steps') {
         this.frame.create(this.targets[this.currentIndex]);
@@ -124,7 +131,7 @@ export default {
       if (nextStageIndex >= this.stages.length) {
         this.finish();
       } else {
-        this.currentIndex = nextStageIndex;
+        this.currentIndex = this.getStage(nextStageIndex);
       }
 
       if (this.type === 'popup-frame-steps') {
@@ -139,7 +146,7 @@ export default {
       if (previousStageIndex < 0) {
         this.currentIndex = 0;
       } else {
-        this.currentIndex = previousStageIndex;
+        this.currentIndex = this.getStage(previousStageIndex);
       }
 
       if (this.type === 'popup-frame-steps') {
